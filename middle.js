@@ -1,3 +1,4 @@
+///////// Testing function
 const eqArrays = function(actualArr, expectedArr) {
   if (actualArr.length !== expectedArr.length) {
     return false;
@@ -6,19 +7,20 @@ const eqArrays = function(actualArr, expectedArr) {
   for (let i = 0; i < actualArr.length; i++) {
     if (actualArr[i] !== expectedArr[i]) {
       return false;
-    }
+    } 
   }
   return true;
 };
 
 const assertArrayEqual = function(actualArr, expectedArr) {
   let equalResult = eqArrays(actualArr, expectedArr);
-  if (equalResult === true) {
+  if (equalResult) {
     return console.log(`✅✅✅ Assertion Passed: ${actualArr} === ${expectedArr}`);
   }
   return console.log(`🛑🛑🛑 Assertion Failed: ${actualArr} !== ${expectedArr}`);
 };
 
+///////// Function code
 const middle = function(arr) {
   let midIndex = Math.ceil((arr.length / 2) - 1);
   let midArray = [];
@@ -29,7 +31,7 @@ const middle = function(arr) {
   return midArray;
 };
 
-// Test code
+///////// Testing calls
 assertArrayEqual(middle([]), []);
 assertArrayEqual(middle([1]), []);
 assertArrayEqual(middle([1, 2]), []);

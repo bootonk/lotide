@@ -1,3 +1,4 @@
+///////// Testing function
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
     return console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
@@ -5,6 +6,7 @@ const assertEqual = function(actual, expected) {
   return console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
 };
 
+///////// Function code
 const findKeyByValue = function(checkObject, checkValue) {
   for (let key in checkObject) {
     if (checkObject[key] === checkValue) {
@@ -13,7 +15,7 @@ const findKeyByValue = function(checkObject, checkValue) {
   }
 };
 
-// Test code
+///////// Testing calls
 const bestTVShowsByGenre = {
   sci_fi: "The Expanse",
   comedy: "Brooklyn Nine-Nine",

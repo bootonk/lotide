@@ -1,3 +1,4 @@
+///////// Testing function
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
     return console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
@@ -5,6 +6,7 @@ const assertEqual = function(actual, expected) {
   return console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
 };
 
+///////// Function code
 const countLetters = function(str) {
   let reducedStr = str.replaceAll(" ", "").toLowerCase();
   let letterCount = {};
@@ -18,6 +20,7 @@ const countLetters = function(str) {
   return letterCount;
 };
 
+///////// Testing calls
 const result1 = countLetters("Lighthouse in the House");
 console.log(result1);
 

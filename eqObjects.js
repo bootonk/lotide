@@ -1,3 +1,4 @@
+///////// Testing functions
 const eqArrays = function(actualArr, expectedArr) {
   if (actualArr.length !== expectedArr.length) {
     return false;
@@ -6,7 +7,7 @@ const eqArrays = function(actualArr, expectedArr) {
   for (let i = 0; i < actualArr.length; i++) {
     if (actualArr[i] !== expectedArr[i]) {
       return false;
-    }
+    } 
   }
   return true;
 };
@@ -18,6 +19,7 @@ const assertEqual = function(actual, expected) {
   return console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
 };
 
+///////// Function code
 const eqObjects = function(objectOne, objectTwo) {
   const objectOneKeys = Object.keys(objectOne);
   const objectTwoKeys = Object.keys(objectTwo);
@@ -36,7 +38,7 @@ const eqObjects = function(objectOne, objectTwo) {
   return true;
 };
 
-// Testing code
+///////// Testing calls
 const shirtObject = { color: "red", size: "medium" };
 const anotherShirtObject = { size: "medium", color: "red" };
 // eqObjects(shirtObject , anotherShirtObject); // => true

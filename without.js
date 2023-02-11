@@ -1,5 +1,5 @@
+///////// Testing functions
 const eqArrays = function(actualArr, expectedArr) {
-  let result = "";
   if (actualArr.length !== expectedArr.length) {
     return false;
   }
@@ -7,21 +7,20 @@ const eqArrays = function(actualArr, expectedArr) {
   for (let i = 0; i < actualArr.length; i++) {
     if (actualArr[i] !== expectedArr[i]) {
       return false;
-    } else {
-      result = true;
-    }
+    } 
   }
-  return result;
+  return true;
 };
 
 const assertArrayEqual = function(actualArr, expectedArr) {
   let equalResult = eqArrays(actualArr, expectedArr);
-  if (equalResult === true) {
+  if (equalResult) {
     return console.log(`✅✅✅ Assertion Passed: ${actualArr} === ${expectedArr}`);
   }
   return console.log(`🛑🛑🛑 Assertion Failed: ${actualArr} !== ${expectedArr}`);
 };
 
+///////// Function code
 const without = function(sourceArr, itemsToRemoveArr) {
   let reducedArr = [];
   for (let element of sourceArr) {
@@ -29,10 +28,10 @@ const without = function(sourceArr, itemsToRemoveArr) {
       reducedArr.push(element);
     }
   }
-  return console.log(reducedArr);
+  return reducedArr;
 };
 
-// Test code
+///////// Testing calls
 without([1, 7, 8, 2, 3], [10, 2, 3]);
 without([1, 2, 3], [1]); // => [2, 3]
 without(["1", "2", "3"], [1, 2, "3"]); // => ["1", "2"]
