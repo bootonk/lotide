@@ -1,10 +1,5 @@
-///////// Testing function
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    return console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  }
-  return console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-};
+///////// Testing function file import
+const assertEqual = require('./assertEqual');
 
 ///////// Function code
 const head = function(arr) {
@@ -12,9 +7,4 @@ const head = function(arr) {
   return firstElement;
 };
 
-///////// Testing calls
-assertEqual(head([5,6,7]), 5);
-assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
-assertEqual(head([]), undefined);
-assertEqual(head([2]), 2);
-assertEqual(head(["7"]), 7);
+module.exports = head;
