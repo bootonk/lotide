@@ -1,17 +1,27 @@
 ///////// Testing function file import
+const assert = require('chai').assert;
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
 
-///////// Testing calls
-// check the original array
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words);
-assertEqual(words.length, 3);
+///////// Mocha & Chai tests
+describe("#tail", () => {
+  it("should return ['Lighthouse', 'Labs'] for ['Yo Yo', 'Lighthouse', 'Labs']", () => {
+    const actual = tail(['Yo Yo', 'Lighthouse', 'Labs']);
+    const expected = ['Lighthouse', 'Labs'];
 
-// single element array
-const soloResult = tail([2]);
-assertEqual(soloResult.length, 0);
+    assert.deepEqual(actual, expected);
+  });
 
-// empty array
-const emptyResult = tail([]);
-assertEqual(emptyResult.length, 0);
+  it("should return [] for [2]", () => {
+    const actual = tail([2]);
+    const expected = [];
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it("should return [] for []", () => {
+    const actual = tail([]);
+    const expected = [];
+
+    assert.deepEqual(actual, expected);
+  });
+});
