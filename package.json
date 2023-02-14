@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@bootonk/lotide",
   "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "description": "a lodash clone as a means to learn libraries",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/bootonk/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kate",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bootonk/lotide/issues"
