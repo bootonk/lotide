@@ -1,6 +1,6 @@
 {
   "name": "@bootonk/lotide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a lodash clone as a means to learn libraries",
   "main": "index.js",
   "directories": {
