@@ -1,7 +1,13 @@
 ///////// Testing function file import
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const flatten = require('../flatten');
 
-///////// Testing calls
-// flatten([1, 2, [3, 4], 5, [6]]);
-assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+///////// Mocha & Chai tests
+describe("#flatten", () => {
+  it("returns [1, 2, 3, 4, 5, 6] from [1, 2, [3, 4], 5, [6]]", () => {
+    const actual = flatten([1, 2, [3, 4], 5, [6]])
+    const expected = [1, 2, 3, 4, 5, 6];
+
+    assert.deepEqual(actual, expected);
+  });
+});

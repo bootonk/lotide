@@ -1,14 +1,27 @@
 ///////// Testing function file import
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const without = require('../without');
 
-///////// Testing calls
-console.log(without([1, 7, 8, 2, 3], [10, 2, 3]));
-console.log(without([1, 2, 3], [1])); // => [2, 3]
-console.log(without(["1", "2", "3"], [1, 2, "3"])); // => ["1", "2"]
-console.log(without(['hello', 'lighthouse', 'labs'], ['labs']));
+///////// Mocha & Chai tests
+describe("#without", () => {
+  it("returns [2, 3] from [1, 2, 3] & [1]", () => {
+    const actual = without([1, 2, 3], [1]);
+    const expected = [2, 3];
 
-// Check to make sure original array was not mutated
-const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]);
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns ['1', '2'] from ['1', '2', '3'] & [1, 2, '3']", () => {
+    const actual = without(['1', '2', '3'], [1, 2, '3']);
+    const expected = ['1', '2'];
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns ['hello', 'lighthouse'] from ['hello', 'lighthouse', 'labs'] & ['labs']", () => {
+    const actual = without(['hello', 'lighthouse', 'labs'], ['labs']);
+    const expected = ['hello', 'lighthouse'];
+
+    assert.deepEqual(actual, expected);
+  });
+});

@@ -1,15 +1,39 @@
 ///////// Testing function file import
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const findKeyByValue = require('../findKeyByValue');
 
-///////// Testing calls
-const bestTVShowsByGenre = {
-  sci_fi: "The Expanse",
-  comedy: "Brooklyn Nine-Nine",
-  drama:  "The Wire"
-};
+///////// Mocha & Chai tests
+describe("#findKeyByValue", () => {
+  const bestTVShowsByGenre = {
+    sci_fi: "The Expanse",
+    comedy: "Brooklyn Nine-Nine",
+    drama:  "The Wire"
+  };
+    
+  it("returns drama for The Wire", () => {
+    const actual = findKeyByValue(bestTVShowsByGenre, "The Wire");
+    const expected = "drama";
 
-assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
-assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
-assertEqual(findKeyByValue(bestTVShowsByGenre, "Brooklyn Nine-Nine"), "drama"); //intentional fail
-assertEqual(findKeyByValue(bestTVShowsByGenre, "Brooklyn Nine-Nine"), "comedy");
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns comedy for Brooklyn Nine-Nine", () => {
+    const actual = findKeyByValue(bestTVShowsByGenre, "Brooklyn Nine-Nine");
+    const expected = "comedy";
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns undefined for 'That 70s Show'", () => {
+    const actual = findKeyByValue(bestTVShowsByGenre, "That '70s Show");
+
+    assert.isUndefined(actual, undefined);
+  });
+
+  it("returns fail for drama for Brooklyn Nine-Nine", () => {
+    const actual = findKeyByValue(bestTVShowsByGenre, "Brooklyn Nine-Nine");
+    const expected = "drama"
+
+    assert.notDeepEqual(actual, expected);
+  });
+});

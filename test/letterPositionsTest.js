@@ -1,16 +1,24 @@
 ///////// Testing function file import
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const letterPositions = require('../letterPositions');
 
-///////// Testing calls
-const result1 = letterPositions("lighthouse in the house");
-assertArraysEqual(result1["l"], [0]);
-assertArraysEqual(result1["i"], [1, 11]);
-assertArraysEqual(result1["g"], [2]);
-assertArraysEqual(result1["h"], [3, 5, 15, 18]);
-assertArraysEqual(result1["t"], [4, 14]);
-assertArraysEqual(result1["o"], [6, 19]);
-assertArraysEqual(result1["u"], [7, 20]);
-assertArraysEqual(result1["s"], [8, 21]);
-assertArraysEqual(result1["e"], [9, 16, 22]);
-assertArraysEqual(result1["n"], [12]);
+///////// Mocha & Chai tests
+describe("#letterPositions", () => {
+  it("returns an array of indexes for each letter", () => {
+    const actual = letterPositions("lighthouse in the house");
+    const expected = {
+      l: [0], 
+      i: [1, 11], 
+      g: [2],
+      h: [3, 5, 15, 18],
+      t: [4, 14],
+      o: [6, 19],
+      u: [7, 20],
+      s: [8, 21],
+      e: [9, 16, 22],
+      n: [12]
+    };
+
+    assert.deepEqual(actual, expected);
+  });
+});

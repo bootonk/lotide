@@ -1,24 +1,28 @@
 ///////// Testing function file import
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const findKey = require('../findKey');
 
-///////// Testing calls
-const results1 = findKey({
-  "Blue Hill": { stars: 1 },
-  "Akaleri":   { stars: 3 },
-  "noma":      { stars: 2 },
-  "elBulli":   { stars: 3 },
-  "Ora":       { stars: 2 },
-  "Akelarre":  { stars: 3 }
-}, x => x.stars === 2); // => "noma"
-assertEqual(results1, "noma");
+///////// Mocha & Chai tests
+describe("#findKey", () => {
+  const obj1 = {
+    "Blue Hill": { stars: 1 },
+    "Akaleri":   { stars: 3 },
+    "noma":      { stars: 2 },
+    "elBulli":   { stars: 3 },
+    "Ora":       { stars: 2 },
+    "Akelarre":  { stars: 3 }
+  }
+    
+  it("returns 'noma' for a search for 2 stars", () => {
+    const actual = findKey(obj1, x => x.stars === 2);
+    const expected = "noma";
 
-const results2 = findKey({
-  "Blue Hill": { stars: 1 },
-  "Akaleri":   { stars: 3 },
-  "noma":      { stars: 2 },
-  "elBulli":   { stars: 3 },
-  "Ora":       { stars: 2 },
-  "Akelarre":  { stars: 3 }
-}, x => x.stars === 5); // => "noma"
-assertEqual(results2, undefined);
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns undefined for a search for 5 stars", () => {
+    const actual = findKey(obj1, x => x.stars === 5);
+
+    assert.isUndefined(actual, undefined);
+  });
+});

@@ -1,23 +1,41 @@
 ///////// Testing function file import
-const assertEqual = require('../assertEqual');
+// const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const countOnly = require('../countOnly');
 
-///////// Testing calls
-const firstNames = [
-  "Karl",
-  "Salima",
-  "Agouhanna",
-  "Fang",
-  "Kavith",
-  "Jason",
-  "Salima",
-  "Fang",
-  "Joe"
-];
+///////// Mocha & Chai tests
+describe("#countOnly", () => {
+  const firstNames = [
+    "Karl",
+    "Salima",
+    "Agouhanna",
+    "Fang",
+    "Kavith",
+    "Jason",
+    "Salima",
+    "Fang",
+    "Joe"
+  ];
 
-const result1 = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false });
+  it("returns the matching names between both sources", () => {
+    const input = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false })
+    const output = {
+      Jason: 1,
+      Fang: 2
+    };
 
-assertEqual(result1["Jason"], 1);
-assertEqual(result1["Karima"], undefined);
-assertEqual(result1["Fang"], 2);
-assertEqual(result1["Agouhanna"], undefined);
+    assert.deepEqual(input, output);
+  });
+
+  it("returns the undefined if on the itemsToCount but not the source array", () => {
+    const input = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false })
+
+    assert.isUndefined(input['Karima'], undefined);
+  });
+
+  it("returns the undefined if on the itemsToCount but set to 'false'", () => {
+    const input = countOnly(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false })
+
+    assert.isUndefined(input['Agouhanna'], undefined);
+  });
+});

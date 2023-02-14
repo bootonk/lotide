@@ -1,16 +1,27 @@
 ///////// Testing function file import
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const map = require('../map');
 
-///////// Testing calls
-const words = ["ground", "control", "to", "major", "tom"];
-const results1 = map(words, word => word[0]);
-assertArraysEqual(results1, ['g', 'c', 't', 'm', 't']); //pass
+///////// Mocha & Chai tests
+describe("#map", () => {
+  it("returns an array of [2, 4, 6, 8, 10] for [1, 2, 3, 4, 5]", () => {
+    const actual = map([1, 2, 3, 4, 5], number => number * 2);
+    const expected = [2, 4, 6, 8, 10];
 
-const numbers = [1, 2, 3, 4, 5];
-const results2 = map(numbers, number => number * 2);
-assertArraysEqual(results2, [2, 4, 6, 8, 10]); //pass
+    assert.deepEqual(actual, expected);
+  });
 
-const pets = ['Juniper', 'Hammy', 'Ruby', 'Gracie'];
-const results3 = map(pets, pet => pet += 'is the best!');
-assertArraysEqual(results3, ['Juniper is the best!', 'Hammy is the best!', 'Ruby is the best!', 'Gracie is the best']); //intetional fail
+  it("returns an array of ['g', 'c', 't', 'm', 't'] for ['ground', 'control', 'to', 'major', 'tom']", () => {
+    const actual = map(["ground", "control", "to", "major", "tom"], word => word[0]);
+    const expected = ['g', 'c', 't', 'm', 't'];
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it("returns an array of ['Juniper is the best!', 'Hammy is the best!', 'Ruby is the best!', 'Gracie is the best'] for ['Juniper', 'Hammy', 'Ruby', 'Gracie']", () => {
+    const actual = map(['Juniper', 'Hammy', 'Ruby', 'Gracie'], pet => pet += ' is the best!');
+    const expected = ['Juniper is the best!', 'Hammy is the best!', 'Ruby is the best!', 'Gracie is the best!'];
+
+    assert.deepEqual(actual, expected);
+  });
+});
